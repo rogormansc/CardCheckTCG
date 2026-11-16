@@ -1,8 +1,8 @@
 // Bump this version when publishing changed app assets.
 const SCOPE = new URL('./',self.location.href);
 const CACHE_PREFIX = `cardcheck-${encodeURIComponent(SCOPE.pathname)}-`;
-const CACHE = `${CACHE_PREFIX}v1.0.0`;
-const REQUIRED = ['./','index.html','styles.css','js/app.js','js/recognizer.js','js/storage.js','data/cards.json','manifest.webmanifest','assets/logo.svg','assets/card-placeholder.svg','assets/icon-192.png','assets/icon-512.png'];
+const CACHE = `${CACHE_PREFIX}v1.0.1`;
+const REQUIRED = ['./','index.html','styles.css','js/app.js','js/recognizer.js','js/storage.js','data/cards.json','manifest.webmanifest','assets/logo.svg','assets/card-placeholder.svg','assets/icon-192.png','assets/icon-512.png', 'assets/logo.png'];
 const REFERENCES = ['assets/cards/umbreon-v-189.png','assets/cards/gardevoir-sylveon-gx-205.png','assets/cards/gardevoir-sylveon-gx-204.png'];
 self.addEventListener('install',event=>{
   event.waitUntil((async()=>{
