@@ -1,0 +1,26 @@
+{
+  "schemaVersion": 1,
+  "cards": [
+    {
+      "id": "swsh7-189", "name": "Umbreon V", "set": "Evolving Skies", "number": "189/203",
+      "variant": "Alternate Full Art", "year": 2021, "image": "assets/cards/umbreon-v-189.png",
+      "artist": "Teeziro", "demoPrices": [300, 312, 295],
+      "sourceUrl": "https://images.pokemontcg.io/swsh7/189_hires.png"
+    },
+    {
+      "id": "sm10-205", "name": "Gardevoir & Sylveon-GX", "set": "Unbroken Bonds", "number": "205/214",
+      "variant": "Alternate Full Art", "year": 2019, "image": "assets/cards/gardevoir-sylveon-gx-205.png",
+      "artist": "Atsuko Nishida", "demoPrices": [450, 465, 440],
+      "sourceUrl": "https://images.pokemontcg.io/sm10/205_hires.png"
+    }
+  ],
+  "alternatives": [
+    {
+      "id": "sm10-204", "name": "Gardevoir & Sylveon-GX", "set": "Unbroken Bonds", "number": "204/214",
+      "variant": "Full Art", "year": 2019, "image": "assets/cards/gardevoir-sylveon-gx-204.png",
+      "artist": "5ban Graphics", "demoPrices": [100, 105, 95],
+      "sourceUrl": "https://images.pokemontcg.io/sm10/204_hires.png"
+    }
+  ],
+  "priceNotice": "All prices are fictional classroom examples in USD, not live quotes or financial advice. Condition is selected by the user; no automated grading."
+}
