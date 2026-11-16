@@ -1,0 +1,6 @@
+run = "npm start"
+entrypoint = "index.html"
+
+[[ports]]
+localPort = 4173
+externalPort = 80

@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#102928">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="description" content="CardCheck: scan your cards, compare sample prices and build your collection. Private recognition on your device.">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="icon" href="assets/logo.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="assets/icon-192.png">
+  <link rel="stylesheet" href="styles.css">
+  <title>CardCheck — Know your cards.</title>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="app-header">
+    <a href="#scan" class="brand" aria-label="CardCheck home"><img src="assets/logo.svg" width="40" height="40" alt=""><span>CardCheck<span class="brand-dot">.</span><small>TRADING CARD INTELLIGENCE</small></span></a>
+    <nav class="main-nav" aria-label="Main navigation">
+      <button data-view="scan" class="nav-link active" aria-current="page"><span aria-hidden="true">⌗</span> Scan</button>
+      <button data-view="collection" class="nav-link"><span aria-hidden="true">▤</span> Collection <span id="collection-count" class="count">0</span></button>
+      <button data-view="catalog" class="nav-link"><span aria-hidden="true">▦</span> My catalog</button>
+    </nav>
+    <span class="prototype-badge"><i></i> CLASSROOM PROTOTYPE</span>
+  </header>
+
+  <main id="main">
+    <div id="global-notice" role="status" class="notice" hidden></div>
+    <section id="view-scan" class="view" aria-labelledby="scan-heading">
+      <div class="page-heading"><div><p class="eyebrow">A LITTLE CLARITY FOR YOUR COLLECTION</p><h1 id="scan-heading">Know your cards<span>.</span></h1><p>Scan it. Check the details. Make your next move.</p></div><span class="privacy-chip"><span aria-hidden="true">◈</span> Photos stay on your device</span></div>
+      <div class="scan-layout">
+        <div class="scanner-panel">
+          <div class="panel-label"><span><span class="live-dot"></span> CARD SCANNER</span><span id="model-state">Preparing catalog…</span></div>
+          <div id="viewfinder" class="viewfinder">
+            <video id="camera" autoplay muted playsinline hidden aria-label="Rear camera preview"></video>
+            <canvas id="photo-preview" hidden aria-label="Selected photo preview"></canvas>
+            <div id="scanner-placeholder" class="scanner-placeholder"><div class="card-outline"><span class="star">✧</span><div class="mini-lines"></div></div></div>
+            <div id="scan-guide" class="scan-guide" aria-hidden="true"><i></i><i></i><i></i><i></i><div class="scan-line"></div></div>
+            <div class="viewfinder-copy"><span id="viewfinder-label">A good card starts with a clear picture.</span><small id="viewfinder-hint">One card · even light · minimal glare</small></div>
+            <span id="camera-mode" class="camera-mode" hidden>CAMERA ON</span>
+          </div>
+          <div class="scanner-controls">
+            <div class="button-row"><button id="start-camera" class="btn primary"><span aria-hidden="true">◎</span> Open camera</button><button id="take-photo" class="btn primary" hidden><span aria-hidden="true">◎</span> Scan card</button><button id="stop-camera" class="btn subtle" hidden>Close camera</button><button id="upload-photo" class="btn secondary"><span aria-hidden="true">↥</span> Upload photo</button></div>
+            <input id="photo-input" type="file" accept="image/*" class="visually-hidden" aria-label="Choose a card photo">
+            <input id="capture-input" type="file" accept="image/*" capture="environment" class="visually-hidden" aria-label="Take a card photo">
+            <p id="scan-status" class="scan-status" role="status" aria-live="polite">Preparing your reference catalog…</p>
+          </div>
+          <div class="try-row"><span>Just exploring?</span><button id="sample-umbreon" class="text-button">Try Umbreon <span aria-hidden="true">↗</span></button><button id="sample-gardevoir" class="text-button">Try Gardevoir <span aria-hidden="true">↗</span></button></div>
+        </div>
+        <aside id="results-panel" class="results-panel" aria-labelledby="result-heading">
+          <div id="result-empty" class="result-empty"><p class="eyebrow">FROM CAMERA TO COLLECTION</p><h2 id="result-heading">Your next find,<br>a little more informed.</h2><p>Identify a card from your catalog and explore a sample price comparison.</p><div class="steps"><div><b>01</b><span>Frame the card<small>Keep the entire front in view.</small></span></div><div><b>02</b><span>Check the match<small>Confirm the set and card number.</small></span></div><div><b>03</b><span>Make it yours<small>Save it to your personal collection.</small></span></div></div><div class="empty-foot"><span class="small-icon">✦</span><p><strong>Small catalog. Clear purpose.</strong><br><span id="catalog-summary">Two starting cards, room for six more.</span></p></div></div>
+          <div id="result-content" hidden></div>
+        </aside>
+      </div>
+      <div class="feature-strip"><div><span>◈</span><p><strong>On-device recognition</strong><small>No scan uploads or AI API fees</small></p></div><div><span>↔</span><p><strong>Compare with context</strong><small>Clearly labeled sample prices</small></p></div><div><span>▤</span><p><strong>Your collection, together</strong><small>Saved locally, with backup export</small></p></div></div>
+    </section>
+
+    <section id="view-collection" class="view" aria-labelledby="collection-heading" hidden>
+      <div class="page-heading"><div><p class="eyebrow">A PLACE FOR EVERY FIND</p><h1 id="collection-heading">Your collection<span>.</span></h1><p>The cards you’ve confirmed, saved on this device.</p></div><button id="export-collection" class="btn secondary">Export CSV <span aria-hidden="true">↗</span></button></div>
+      <div class="collection-stats"><div><span>Total cards</span><strong id="stat-total">0</strong></div><div><span>Unique cards</span><strong id="stat-unique">0</strong></div><div><span>Sample value · USD</span><strong id="stat-value">$0.00</strong><small>Fictional prices; not a valuation</small></div></div>
+      <div id="collection-list" class="collection-list"></div>
+    </section>
+
+    <section id="view-catalog" class="view" aria-labelledby="catalog-heading" hidden>
+      <div class="page-heading"><div><p class="eyebrow">YOUR RECOGNITION LIBRARY</p><h1 id="catalog-heading">Start small. Add more<span>.</span></h1><p>Two starter cards. Eight catalog slots. Trained locally from reference photos.</p></div><button id="add-card" class="btn primary">+ Add a card</button></div>
+      <div class="catalog-toolbar"><span id="catalog-capacity" class="capacity-chip">2 / 8 slots</span><span id="catalog-load-state">Loading references…</span><div class="toolbar-actions"><button id="export-pack" class="text-button">Export backup ↓</button><button id="import-pack" class="text-button">Import backup ↑</button><input type="file" id="import-input" accept="application/json,.json" class="visually-hidden" aria-label="Import CardCheck backup"></div></div>
+      <div id="catalog-list" class="catalog-grid"></div>
+      <div class="catalog-notes"><div><p class="eyebrow">BETTER PHOTOS, BETTER MATCHES</p><h3>Teach it your actual cards.</h3><p>Add a straight-on photo, then another in your usual lighting. A card should fill most of the reference image. Use “Add reference” to improve an existing card.</p><p>Visual matching identifies artwork. It cannot verify authenticity, detect every reprint, or grade condition.</p></div><div><p class="eyebrow">PRIVATE BY DESIGN</p><h3>Your photos stay here.</h3><p>Scans are processed in memory and are not retained. Reference photos and your collection are stored in this browser. Export a backup before clearing website data or changing devices.</p><p>Starter artwork may load from Pokémon TCG’s image host when it is not bundled. Marketplace links open external websites.</p></div></div>
+      <input id="reference-input" type="file" accept="image/*" class="visually-hidden" aria-label="Add a reference photo">
+    </section>
+    <noscript><p class="notice">CardCheck needs JavaScript for camera scanning and recognition.</p></noscript>
+  </main>
+  <footer class="app-footer"><span>CARDCHECK <span class="footer-dot">●</span> SCAN. COMPARE. COLLECT.</span><p>Independent student prototype. Not affiliated with Pokémon. Authenticity unverified.</p><button id="about-button" class="text-button">About this demo</button></footer>
+  <div id="toast" role="status" aria-live="polite" hidden></div>
+  <dialog id="card-dialog" aria-labelledby="card-dialog-title"><form id="card-form"><div class="dialog-title"><div><p class="eyebrow">EXPAND YOUR CATALOG</p><h2 id="card-dialog-title">Add a card</h2></div><button type="button" data-close-dialog class="icon-button" aria-label="Close dialog">×</button></div><p class="muted">Use a clear, cropped front photo of a card you can use as a reference.</p><label>Card name<input name="name" required maxlength="100" placeholder="e.g. Pikachu V"></label><div class="form-columns"><label>Set<input name="set" required maxlength="100" placeholder="e.g. Vivid Voltage"></label><label>Number<input name="number" required maxlength="30" placeholder="e.g. 170/185"></label></div><label>Variant<input name="variant" required maxlength="80" placeholder="e.g. Full Art"></label><label>Reference photo<input name="image" type="file" accept="image/*" required></label><p class="muted">Reference images stay on this device. You can export them in a backup.</p><button type="submit" class="btn primary full-width">Add & build reference</button></form></dialog>
+  <dialog id="about-dialog" aria-labelledby="about-title"><div class="dialog-title"><div><p class="eyebrow">BUILT FOR THE DEMO</p><h2 id="about-title">A clearer card check.</h2></div><button data-close-dialog class="icon-button" aria-label="Close dialog">×</button></div><p>CardCheck is a student prototype with visual feature matching for a catalog of up to eight cards. It compares local image details and checks their geometric arrangement. A strong match is evidence, not a calibrated probability.</p><p>Confirm the card’s name, number, set, and variant yourself. Recognition does not establish authenticity, language, print edition, condition, or investment value.</p><p>All displayed prices are fictional examples in USD. They demonstrate the planned comparison interface. Condition is entered by you, and it does not automatically change sample prices.</p><p>Your scans never leave the device. First-time reference downloads and external marketplace links require internet access. No accounts, analytics, or paid AI APIs are included.</p><p>Camera access requires HTTPS or localhost. On iPhone, open the HTTPS site in Safari, then use Share → Add to Home Screen.</p><p>Pokémon and its artwork belong to their respective rights holders. This independent project does not grant reuse rights for artwork. See SETUP.md for deployment and image-use notes.</p><button data-close-dialog class="btn primary full-width">Got it</button></dialog>
+  <script type="module" src="js/app.js"></script>
+</body>
+</html>

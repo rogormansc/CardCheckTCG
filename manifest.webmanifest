@@ -1,0 +1,15 @@
+{
+  "id": "./",
+  "name": "CardCheck TCG",
+  "short_name": "CardCheck",
+  "description": "Scan, compare and collect. Private on-device card matching.",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#f5f6f3",
+  "theme_color": "#102928",
+  "icons": [
+    {"src":"assets/icon-192.png","sizes":"192x192","type":"image/png"},
+    {"src":"assets/icon-512.png","sizes":"512x512","type":"image/png","purpose":"any maskable"}
+  ]
+}
